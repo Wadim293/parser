@@ -1,0 +1,7 @@
+aiogram==3.20.0.post0
+aiohttp
+sqlalchemy==2.0
+asyncpg
+pyrogram
+tgcrypto
+redis
