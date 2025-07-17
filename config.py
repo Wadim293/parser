@@ -6,4 +6,4 @@ WEBHOOK_PORT = 3000
 API_ID = 2040
 API_HASH = "b18441a1ff607e10a989891a5462e627"
 
-POSTGRES_URI = "sqlite+aiosqlite:///./test.db"
+POSTGRES_URI = "postgresql+asyncpg://postgres:TZmkTJcJURUuSHfCyemekJiRotfOevZq@postgres.railway.internal:5432/railway"
