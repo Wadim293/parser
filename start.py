@@ -5,12 +5,12 @@ from sqlalchemy import select
 
 router = Router()
 
-# 👤 Обработка команды /start
 @router.message(F.text == "/start")
 async def start_cmd(message: Message):
     async with Session() as session:
+        # Поиск по telegram_id, если нет — создаём, если есть — просто берём
         user = await session.scalar(select(User).where(User.telegram_id == message.from_user.id))
-        if not user:
+        if user is None:
             user = User(
                 telegram_id=message.from_user.id,
                 full_name=message.from_user.full_name,
@@ -34,7 +34,6 @@ async def send_main_menu(message: Message):
             InlineKeyboardButton(text="📁 Мои аккаунты", callback_data="my_accounts"),
         ]
     ])
-
     await message.answer(
         text="👋 <b>Добро пожаловать!</b>\nВыберите действие ниже:",
         reply_markup=keyboard,
